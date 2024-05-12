@@ -1,0 +1,24 @@
+Name: user.rpc
+Mode: dev
+ListenOn: 0.0.0.0:10001
+# Etcd:
+#   Hosts:
+#   - 127.0.0.1:2379
+#   Key: user.rpc
+# 使用consul来作为注册中心
+Consul:
+  Host: 127.0.0.1:8500
+  Key: consul-user.rpc
+Mysql:
+  DataSource: chatops:Chatops_123@tcp(116.204.88.174:3306)/chatops_server?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+# 日志配置
+Log:
+  ServiceName: "user-rpc"
+  Mode: file
+  Encoding: plain
+  Path: /var/log/chatops-server
+  Level: debug
+  Stat: true
+
+# 加盐
+Secret: "让我把记忆结成冰"

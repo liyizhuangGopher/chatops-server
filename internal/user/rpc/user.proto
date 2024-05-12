@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "./user";
+
+// Login
+message loginRequest {
+    string username = 1;
+    string password = 2;
+}
+message loginResponse {
+    string message = 1;
+    int64 userID = 2;
+    string username = 3;
+}
+// Login
+
+// UpdateUserInfo
+message updateUserInfoRequest {
+    string password = 1;
+    string realName = 2;
+    string phoneNumber = 3;
+    int64 departmentId = 4;
+    string email = 5;
+    string jenkinsAccount = 6;
+    string jenkinsPassword = 7;
+    string avatar = 8;
+    int64 id = 9;
+}
+message updateUserInfoResponse {
+    string message = 1;
+}
+// UserList
+message userInfo {
+    int64 userID = 1;
+    string username = 2;
+}
+message userListRequest {
+}
+message userListResponse {
+    repeated userInfo userList = 1;
+}
+// UserList
+
+// UserDetail
+message userDetailRequest {
+    string username = 1;
+}
+message userDetailResponse {
+    int64 userID = 1;
+    string username = 2;
+    string realName = 3;
+    string phoneNumber = 4;
+    string departmentName = 5;
+    string email = 6;
+    string jenkinsAccount = 7;
+    string isAdmin = 8;
+}
+// UserDetail
+// AddUser
+message addUserRequest {
+    string username = 1;
+    string password = 2;
+    string realName = 4;
+    string phoneNumber = 5;
+    int64 departmentId = 6;
+    string email = 7;
+    string jenkinsAccount = 8;
+    string jenkinsPassword = 9;
+    string avatar = 10;
+    string isAdmin = 11;
+}
+message addUserResponse {
+    string message = 1;
+    int64 userID = 2;
+    string username = 3;
+}
+
+// AddUser
+
+// DelUser
+message delUserRequest {
+    string username = 1;
+}
+message delUserResponse {
+    string message = 1;
+    int64 userID = 2;
+    string username = 3;
+}
+// DelUser
+
+// Services
+service User {
+    rpc login(loginRequest) returns (loginResponse);
+    rpc addUser(addUserRequest) returns (addUserResponse);
+    rpc updateUserInfo(updateUserInfoRequest) returns (updateUserInfoResponse);
+    rpc userList(userListRequest) returns (userListResponse);
+    rpc userDetail(userDetailRequest) returns (userDetailResponse);
+    rpc delUser(delUserRequest) returns (delUserResponse);
+}
+// Services

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package group;
+
+option go_package = "./group";
+
+
+// AddGroup
+message addGroupRequest {
+    string name = 1;
+    string conversionID = 2;
+}
+message addGroupResponse {
+    string message = 1;
+}
+// AddGroup
+
+// DeleteGroup
+message deleteGroupRequest {
+    string name = 1;
+}
+message deleteGroupResponse {
+    string message = 1;
+}
+// DeleteGroup
+
+// GroupList
+message groupInfo {
+    string name = 1;
+    string conversionID = 2;
+}
+message groupListRequest {
+}
+message groupListResponse {
+    string message = 1;
+    repeated groupInfo groupList = 2;
+}
+// GroupList
+
+// GroupDetail
+message groupDetailRequest {
+    string name = 1;
+}
+message groupDetailResponse {
+    string message = 1;
+    string name = 2;
+    string conversionID = 3;
+}
+// GroupDetail
+
+// Services
+service Group {
+    rpc AddGroup(addGroupRequest) returns(addGroupResponse);
+    rpc DeleteGroup(deleteGroupRequest) returns(deleteGroupResponse);
+    rpc GroupList(groupListRequest) returns(groupListResponse);
+    rpc GroupDetail(groupDetailRequest) returns(groupDetailResponse);
+}
+// Services

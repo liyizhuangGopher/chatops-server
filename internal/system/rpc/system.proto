@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package system;
+
+option go_package = "./system";
+
+// SystemDetailInfo
+message systemDetailInfoRequest {
+}
+message systemDetailInfoResponse {
+    int64 detectDuration = 1;   // 探测钉钉群组时间间隔
+    int64 historyDurantion = 2; // task历史保留时间
+}
+// SystemDetailInfo
+
+// UpdateSystemInfo
+message updateSystemInfoRequest {
+    int64 detectDuration = 1;   // 探测钉钉群组时间间隔
+    int64 historyDurantion = 2; // task历史保留时间
+}
+message updateSystemInfoResponse {
+    string message = 1;
+}
+// UpdateSystemInfo
+
+// SecretDetailInfo
+message secretDetailInfoRequest {
+}
+message secretDetailInfoResponse {
+    string message = 1;
+    string agentID = 2;
+    string appKey = 3;
+    string appSecret = 4;
+}
+// SecretDetailInfo
+
+// UpdateSecretInfo
+message updateSecretInfoRequest {
+    string agentID = 1;
+    string appKey = 2;
+    string appSecret = 3;
+    string name = 4;
+}
+message updateSecretInfoResponse {
+    string message = 1;
+}
+// UpdateSecretInfo
+
+// Services
+service System {
+    rpc systemDetailInfo(systemDetailInfoRequest) returns(systemDetailInfoResponse);
+    rpc updateSystemInfo(updateSystemInfoRequest) returns(updateSystemInfoResponse);
+    rpc secretDetailInfo(secretDetailInfoRequest) returns(secretDetailInfoResponse);
+    rpc updateSecretInfo(updateSecretInfoRequest) returns(updateSecretInfoResponse);
+}
+// Services

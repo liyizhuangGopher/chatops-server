@@ -1,0 +1,17 @@
+Consul:
+    Host: 127.0.0.1:8500
+    Key: consul-system.rpc
+DetectDuration: 13
+HistoryDurantion: 14
+ListenOn: 0.0.0.0:10002
+Log:
+    Encoding: plain
+    Level: debug
+    Mode: file
+    Path: /var/log/chatops-server
+    ServiceName: system-rpc
+    Stat: true
+Mode: dev
+Mysql:
+    DataSource: chatops:Chatops_123@tcp(116.204.88.174:3306)/chatops_server?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+Name: system.rpc

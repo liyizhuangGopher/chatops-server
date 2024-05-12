@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package task;
+
+option go_package = "./task";
+
+// AddTask
+message addTaskRequest {
+    string name = 1;
+    string type = 2;
+    int64 remoteID = 3;
+    string script = 4;
+    string jenkinsJobName = 5;
+    string execParams = 6;
+    int64 groupID = 7;
+    int64 userID = 8;
+}
+message addTaskResponse {
+    string message = 1;
+}
+// AddTask
+
+// DeleteTask
+message deleteTaskRequest {
+    string name = 1;
+}
+message deleteTaskResponse {
+    string message = 1;
+}
+// DeleteTask
+
+// UpdateTask
+message updateTaskRequest {
+    string name = 1;
+    string type = 2;
+    int64 remoteID = 3;
+    string script = 4;
+    string jenkinsJobName = 5;
+    string execParams = 6;
+    int64 groupID = 7;
+    int64 userID = 8;
+}
+message updateTaskResponse {
+    string message = 1;
+}
+// UpdateTask
+
+// TaskDetail
+message taskDetailRequest {
+    string name = 1;
+}
+message taskDetailResponse {
+    string message = 1;
+    string name = 2;
+    string type = 3;
+    int64 remoteID = 4;
+    string script = 5;
+    string jenkinsJobName = 6;
+    string execParams = 7;
+    string groupName = 8;
+    string username = 9;
+}
+// TaskDetail
+
+// TaskList
+message taskInfo {
+    string name = 1;
+    string type = 2;
+    string groupName = 3;
+    string username = 4;
+}
+message taskListRequest {
+}
+message taskListResponse {
+    string message = 1;
+    repeated taskInfo taskList = 2;
+}
+// TaskList
+
+// Services
+service Task {
+    rpc addTask(addTaskRequest) returns(addTaskResponse);
+    rpc deleteTask(deleteTaskRequest) returns(deleteTaskResponse);
+    rpc updateTask(updateTaskRequest) returns(updateTaskResponse);
+    rpc taskDetail(taskDetailRequest) returns(taskDetailResponse);
+    rpc taskList(taskListRequest) returns(taskListResponse);
+}
+// Services

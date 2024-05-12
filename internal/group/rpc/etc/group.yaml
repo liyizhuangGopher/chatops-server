@@ -1,0 +1,22 @@
+Name: group.rpc
+ListenOn: 0.0.0.0:10003
+Mode: dev
+# Etcd:
+#   Hosts:
+#   - 127.0.0.1:2379
+#   Key: group.rpc
+Consul:
+  Host: 127.0.0.1:8500
+  Key: consul-group.rpc
+
+Mysql:
+  DataSource: chatops:Chatops_123@tcp(116.204.88.174:3306)/chatops_server?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+
+# 日志配置
+Log:
+  ServiceName: "group-rpc"
+  Mode: file
+  Encoding: plain
+  Path: /var/log/chatops-server
+  Level: debug
+  Stat: true
